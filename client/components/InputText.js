@@ -1,4 +1,5 @@
 import React from "react";
+import analyzeText from "../util/analyzeText"
 
 class InputText extends React.Component {
   constructor() {
@@ -11,7 +12,8 @@ class InputText extends React.Component {
     const reader = new FileReader()
     reader.onload = () => {
       const text = reader.result
-      console.log(text)
+      const textAnalysis = analyzeText(text)
+      console.log(textAnalysis)
     }
     reader.readAsText(e.target.file.files[0])
   }
