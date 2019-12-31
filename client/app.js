@@ -6,13 +6,13 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <div id='content'>
-        <div id='inputAreas'>
+      <div id="content">
+        <div id="inputAreas">
           <InputText />
           <PrevTexts />
         </div>
-        <div id='currentText'>
-           <CurrentText />
+        <div id="currentText">
+          <CurrentText />
         </div>
       </div>
     </div>

@@ -11,7 +11,9 @@ const CurrentText = props => {
     wordCounts,
     text
   } = props.currentText;
-  const wordCountsArray = wordCounts?Object.keys(wordCounts).sort(descNumSort):[];
+  const wordCountsArray = wordCounts
+    ? Object.keys(wordCounts).sort(descNumSort)
+    : [];
   return Object.keys(props.currentText).length ? (
     <div>
       <h3 className="header">Text analysis</h3>
@@ -38,7 +40,7 @@ const CurrentText = props => {
       <div className="section">
         {wordCountsArray.map((count, i) => {
           return wordCounts[count].map(word => {
-            let rank= i+1
+            let rank = i + 1;
             return (
               <div key={word}>
                 {rank}. <strong>{word}</strong> - count: <em>{count}</em>

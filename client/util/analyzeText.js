@@ -6,7 +6,7 @@ export default (fileName, text, excludeStopWords) => {
   let indexStart = 0; //initiate two pointers that will run along the text and delimit a word
   let indexEnd = 0;
 
-//   const trie = new Trie();
+  //   const trie = new Trie();
   const wordCountsMap = new Map();
 
   const minNumWords = 25; //the minimum number of top frequency words, there can be more if some words are tied
@@ -26,10 +26,10 @@ export default (fileName, text, excludeStopWords) => {
           text.slice(indexStart, indexEnd).toLowerCase()
         );
         if (!excludeStopWords || !stopWords.has(word)) {
-        //   const count = trie.addWord(word);
-          const prevCount = wordCountsMap.get(word) || 0
-          const count = prevCount+1
-          wordCountsMap.set(word,count)
+          //   const count = trie.addWord(word);
+          const prevCount = wordCountsMap.get(word) || 0;
+          const count = prevCount + 1;
+          wordCountsMap.set(word, count);
           topWords.addWord(word, count);
           numTotalWords++;
           numDistinctWords =
@@ -42,7 +42,8 @@ export default (fileName, text, excludeStopWords) => {
   }
 
   const wordCounts = topWords.getWordCounts();
-  for (let count in wordCounts) { //wordCounts associates each high frequency word count (key) with a Set of words at that word count (value). Here we are just converting those Sets to arrays for ease of use
+  for (let count in wordCounts) {
+    //wordCounts associates each high frequency word count (key) with a Set of words at that word count (value). Here we are just converting those Sets to arrays for ease of use
     wordCounts[count] = Array.from(wordCounts[count]);
   }
 
@@ -61,7 +62,8 @@ const isAlphaNumeric = char => {
 };
 
 const endsWithSilentE = word => {
-  return /([aeiou][b-df-hj-np-tv-xz])|([b-df-hj-np-tv-xz][cg])/.test( //tests for word stems ending in (vowel)(consonant) or (vowel)(consonant)(c) or (vowel)(consonant)(g)
+  return /([aeiou][b-df-hj-np-tv-xz])|([b-df-hj-np-tv-xz][cg])/.test(
+    //tests for word stems ending in (vowel)(consonant) or (vowel)(consonant)(c) or (vowel)(consonant)(g)
     word.slice(word.length - 2)
   );
 };

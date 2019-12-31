@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
 const Navbar = () => (
   <div>
-    <h1 className='header'>Word Count Analyzer</h1>
+    <h1 className="header">Word Count Analyzer</h1>
     <hr />
   </div>
-)
+);
 
-export default Navbar
+export default Navbar;
