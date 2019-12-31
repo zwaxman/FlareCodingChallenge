@@ -15,11 +15,10 @@ export default (fileName, text, excludeStopWords) => {
   let numTotalWords = 0; //the total number of words in the file
   let numDistinctWords = 0; //the total number of distinct words in the file
 
-  while (indexEnd < text.length) {
-    const char = text[indexEnd];
+  while (indexEnd < text.length+1) {
+    const char = text[indexEnd] || '.'; //last character of the text (edge case)
     if (
-      !isAlphaNumeric(char) || //if the char isn't alphanumeric (ie. char is a word delimiter)
-      (indexEnd === text.length - 1 && isAlphaNumeric(char)) //or we are on the last character of the text (edge case)
+      !isAlphaNumeric(char) //if the char isn't alphanumeric (ie. char is a word delimiter)
     ) {
       if (indexEnd - indexStart >= 1) {
         const word = getRootWord(
@@ -69,7 +68,7 @@ const endsWithSilentE = word => {
 };
 
 const endsWithDoubleConsonant = word => {
-  return /([bdgmnprst])\1/.test(word.slice(word.length - 2));
+  return /([bdgmnprt])\1/.test(word.slice(word.length - 2));
 };
 
 const getRootWord = word => {
