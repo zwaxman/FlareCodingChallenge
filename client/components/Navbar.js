@@ -2,7 +2,7 @@ import React from 'react'
 
 const Navbar = () => (
   <div>
-    <h1 style={{textAlign: 'center'}}>Word Count Analyzer</h1>
+    <h1 className='header'>Word Count Analyzer</h1>
     <hr />
   </div>
 )

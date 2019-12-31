@@ -13,7 +13,7 @@ const CurrentText = props => {
   } = props.currentText;
   return Object.keys(props.currentText).length ? (
     <div>
-      <h3 style={{textAlign: 'center'}}>Text analysis</h3>
+      <h3 className='header'>Text analysis</h3>
       <div className='section'>
         <div>File name: <strong>{fileName}</strong></div>
         <div>Analysis timestamp: <strong>{new Date(createdAt).toString()}</strong></div>

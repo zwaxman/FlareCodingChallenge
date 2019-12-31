@@ -31,7 +31,7 @@ class InputText extends React.Component {
   render() {
     return (
       <div>
-        <h3 style={{textAlign: 'center'}}>Submit new .txt file for analysis</h3>
+        <h3 className='header'>Submit new .txt file for analysis</h3>
         <form onSubmit={this.onSubmit}>
           <input name='file' type="file" />
           <p>{this.state.message}</p>

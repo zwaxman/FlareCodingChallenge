@@ -76,9 +76,13 @@ const removeSuffix = word => {
   }
   if (length >= 4) {
     if (word.slice(length - 2) === "ed" || word.slice(length - 2) === "es") {
-      return endsWithSilentE(word.slice(0, length - 2))
-        ? word.slice(0, length - 1)
-        : word.slice(0, length - 2);
+      if (endsWithDoubleConsonant(word.slice(0, length - 2))) {
+        return word.slice(0, length - 3);
+      } else if (endsWithSilentE(word.slice(0, length - 2))) {
+        return word.slice(0, length - 2).concat("e");
+      } else {
+        return word.slice(0, length - 2);
+      }
     }
   }
   if (length >= 3) {

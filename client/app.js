@@ -6,12 +6,12 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
-        <div style={{display: 'flex', flexDirection: 'column', margin: '10px'}}>
+      <div id='content'>
+        <div id='inputAreas'>
           <InputText />
           <PrevTexts />
         </div>
-        <div style={{margin: '10px'}}>
+        <div id='currentText'>
            <CurrentText />
         </div>
       </div>

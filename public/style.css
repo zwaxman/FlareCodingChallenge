@@ -1,3 +1,27 @@
 .section {
     margin: 10px 0
 }
+
+#content {
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
+
+#inputAreas {
+    display: flex;
+    flex-direction: column;
+    margin: 10px
+}
+
+#currentText {
+    margin: 10px
+}
+
+.header {
+    text-align: center
+}
+
+.prevText {
+    display: flex;
+    justify-content: space-between
+}
