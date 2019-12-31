@@ -31,6 +31,7 @@ class InputText extends React.Component {
   render() {
     return (
       <div>
+        <h3 style={{textAlign: 'center'}}>Submit new .txt file for analysis</h3>
         <form onSubmit={this.onSubmit}>
           <input name='file' type="file" />
           <p>{this.state.message}</p>
@@ -40,6 +41,7 @@ class InputText extends React.Component {
           </div>
           <button type="submit">Submit</button>
         </form>
+        <hr/>
       </div>
     );
   }

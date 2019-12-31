@@ -25,7 +25,6 @@ const setCurrentText = currentText => ({
 export const postCurrentText = currentText => async dispatch => {
   try {
     const {data} = await axios.post('/api/texts', currentText)
-    console.log(data)
     dispatch(setCurrentText(data))
     const postedTextForPrev = {id: data.id, createdAt: data.createdAt, fileName: data.fileName}
     dispatch(addPrevText(postedTextForPrev))

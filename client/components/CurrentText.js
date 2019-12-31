@@ -13,16 +13,17 @@ const CurrentText = props => {
   } = props.currentText;
   return Object.keys(props.currentText).length ? (
     <div>
-      <div>
+      <h3 style={{textAlign: 'center'}}>Text analysis</h3>
+      <div className='section'>
         <div>File name: <strong>{fileName}</strong></div>
-        <div>Analysis timestamp: <strong>{createdAt}</strong></div>
+        <div>Analysis timestamp: <strong>{new Date(createdAt).toString()}</strong></div>
         <div>Excluded common English words: <strong>{excludeStopWords.toString()}</strong></div>
       </div>
-      <div>
+      <div className='section'>
         <div># total words: <strong>{numTotalWords}</strong></div>
         <div># distinct words: <strong>{numDistinctWords}</strong></div>
       </div>
-      <div>
+      <div className='section'>
         {Object.keys(wordCounts)
           .sort(descNumSort)
           .map((count, i) => {
@@ -36,7 +37,7 @@ const CurrentText = props => {
             });
           })}
       </div>
-      <div>
+      <div className='section'>
         <div>Full text:</div>
         <div><em>{text}</em></div>
       </div>
