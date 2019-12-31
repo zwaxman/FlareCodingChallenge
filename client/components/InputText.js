@@ -1,7 +1,7 @@
 import React from "react";
 import analyzeText from "../util/analyzeText"
 import {connect} from 'react-redux'
-import {setCurrentText} from '../store/currentText'
+import {postCurrentText} from '../store/currentText'
 
 class InputText extends React.Component {
   constructor() {
@@ -23,7 +23,7 @@ class InputText extends React.Component {
     reader.onload = () => {
       const text = reader.result
       const textAnalysis = analyzeText(fileName, text, excludeStopWords)
-      this.props.setCurrentText(textAnalysis)
+      this.props.postCurrentText(textAnalysis)
     }
     reader.readAsText(e.target.file.files[0])
   }
@@ -45,6 +45,6 @@ class InputText extends React.Component {
   }
 }
 
-const mapDispatchToProps = {setCurrentText}
+const mapDispatchToProps = {postCurrentText}
 
 export default connect(null, mapDispatchToProps)(InputText);

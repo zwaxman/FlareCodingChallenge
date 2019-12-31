@@ -14,7 +14,7 @@ const initialState = {}
 /**
  * ACTION CREATORS
  */
-export const setCurrentText = currentText => ({
+const setCurrentText = currentText => ({
   type: SET_CURRENT_TEXT,
   currentText
 })
@@ -24,9 +24,10 @@ export const setCurrentText = currentText => ({
  */
 export const postCurrentText = currentText => async dispatch => {
   try {
-    const postedText = await axios.post('/api/texts', currentText)
-    dispatch(setCurrentText(postedText))
-    const postedTextForPrev = {id: postedText.id, createdAt: postedText.createdAt, fileName: postedText.fileName}
+    const {data} = await axios.post('/api/texts', currentText)
+    console.log(data)
+    dispatch(setCurrentText(data))
+    const postedTextForPrev = {id: data.id, createdAt: data.createdAt, fileName: data.fileName}
     dispatch(addPrevText(postedTextForPrev))
   } catch (err) {
     console.error('Unable to post current text analysis to database')
@@ -35,8 +36,8 @@ export const postCurrentText = currentText => async dispatch => {
 
 export const fetchCurrentText = id => async dispatch => {
   try {
-    const currentText = await axios.get(`api/texts/${id}`)
-    dispatch(setCurrentText(currentText))
+    const {data} = await axios.get(`api/texts/${id}`)
+    dispatch(setCurrentText(data))
   } catch (error) {
     console.error('Unable to fetch selected text analysis from database')
   }

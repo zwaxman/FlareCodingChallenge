@@ -31,8 +31,8 @@ const setPrevTexts = prevTexts => ({
  */
 export const fetchPrevTexts = () => async dispatch => {
   try {
-    const prevTexts = await axios.get('/api/texts')
-    dispatch(setPrevTexts(prevTexts))
+    const {data} = await axios.get('/api/texts')
+    dispatch(setPrevTexts(data))
   } catch (error) {
     console.error('Unable to fetch previous text analyses')
   }

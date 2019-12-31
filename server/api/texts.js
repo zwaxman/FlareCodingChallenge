@@ -6,7 +6,7 @@ const numPrevTextsToSave = 10
 
 router.get('/', async (req, res, next) => {
   try {
-    const texts = await Text.findAll()
+    const texts = await Text.findAll({attributes: ['createdAt, fileName, id']})
     res.json(texts)
   } catch (err) {
     next(err)
