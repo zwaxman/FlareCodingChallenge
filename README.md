@@ -22,7 +22,10 @@ You can access the web app at localhost:8080
 
 ## Overview of solution
 ### Prompt
-The prompt was to create a web application that could perform a persistent word count analysis on a user-uploaded text document. I started by constructing a SPA boilerplate using Node.js on the backend running Express.js for the server and Sequelize.js as an ORM framework connecting to a PostgreSQL database. On the frontend, I used React components for an interactive DOM, Redux for state management, React-Redux to connect my React components to the store, Redux-Thunk to perform async requests to the server to update state, and Axios to send HTTP requests. 
+The prompt was to create a web application that could perform a persistent word count analysis on a user-uploaded text document. 
+
+### Libraries/Frameworks
+I started by constructing a SPA boilerplate using Node.js on the backend running Express.js for the server and Sequelize.js as an ORM connecting to a PostgreSQL database. On the frontend, I used React components for an interactive DOM, Redux for state management, React-Redux to connect my React components to the store, Redux-Thunk to perform async requests to the server to update state, and Axios to send HTTP requests. 
 
 ### Front End
 I felt the prompt was perfect for a front-to-back approach. I started by creating a component, <InputText/>, that accepts a file and allows you to choose whether you want to exclude common English words. An error message is shown if the file extension is not .txt. On submission, the file is converted to a string by FileReader, and then passed to analyzeText(). The text analysis takes place on the client's computer, rather than the server, to prevent server overload. The results of the analysis are then sent to the server to be stored on the database. When the app loads, a React component lifecycle method, componentDidMount(), runs that fetches the filename and timestamp of the most recent 10 analyses from the database. If the user clicks on one of the previous analyses, a thunk is dispatched that fetches the complete text analysis from the database, updates the app state currentText, and displays the analysis in <CurrentText/> 
