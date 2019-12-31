@@ -1,4 +1,6 @@
-export default text => {
+import stopWords from './stopWords'
+
+export default (text, excludeStopWords) => {
   let indexStart = 0;
   let indexEnd = 0;
   const trie = new Trie();
@@ -9,17 +11,23 @@ export default text => {
         const word = removeSuffix(
           text.slice(indexStart, indexEnd).toLowerCase()
         );
-        const count = trie.addWord(word);
-        console.log(word, count);
+        if (!excludeStopWords || !stopWords.has(word)) {
+            const count = trie.addWord(word);
+            console.log(word, count);
+        }
       }
       indexStart = indexEnd + 1;
     }
     indexEnd++;
   }
   if (indexEnd - indexStart >= 1) {
-    const word = removeSuffix(text.slice(indexStart, indexEnd).toLowerCase());
-    trie.addWord(word);
-    console.log(trie);
+    const word = removeSuffix(
+      text.slice(indexStart, indexEnd).toLowerCase()
+    );
+    if (!excludeStopWords || !stopWords.has(word)) {
+        const count = trie.addWord(word);
+        console.log(word, count);
+    }
   }
 };
 
@@ -80,3 +88,5 @@ class Trie {
     }
   }
 }
+
+
