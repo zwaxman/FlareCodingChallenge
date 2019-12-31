@@ -2,6 +2,8 @@ const router = require('express').Router()
 const {Text} = require('../db/models')
 module.exports = router
 
+const numPrevTextsToSave = 10
+
 router.get('/', async (req, res, next) => {
   try {
     const texts = await Text.findAll()
@@ -14,6 +16,9 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const text = await Text.create(req.body)
+    if (text.id>=numPrevTextsToSave) {
+      await Text.delete({where: {id: text.id-numPrevTextsToSave}})
+    }
     res.json(text)
   } catch (err) {
     next(err)
